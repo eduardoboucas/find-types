@@ -7,7 +7,7 @@ Are you considering converting your JavaScript project to TypeScript and you're 
 ## Usage
 
 ```bash
-npx find-types <name of your package>
+npx find-types <name of your npm module>
 ```
 
 ## How it works
