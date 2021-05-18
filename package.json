@@ -1,6 +1,6 @@
 {
   "name": "find-types",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Find which of your module's dependencies have TypeScript types available",
   "main": "index.js",
   "keywords": [
