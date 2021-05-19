@@ -10,7 +10,7 @@ Are you considering converting your JavaScript project to TypeScript and you're 
 npx find-types <name of your npm module>
 ```
 
-> Note: If you do not include a module name argument, find=types will look for a package.json file in the current working directory to check for type definition availability
+> If you don't specify a module name, find-types will work with the project in the current working directory, if one exists.
 
 ## How it works
 
