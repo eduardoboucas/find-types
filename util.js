@@ -1,11 +1,6 @@
-const path = require("path");
 const got = require("got");
 
 const getDependenciesWithTypes = async (packageName, version) => {
-  if (!packageName) {
-    console.warn("\nPackage name missing, looking for local package.json");
-  }
-
   const package = packageName
     ? await getPackageJson(packageName, version)
     : readPackageJson();
@@ -45,10 +40,7 @@ const getPackageJson = async (packageName, version) => {
 
 const readPackageJson = () => {
   try {
-    const { dependencies, types } = require(path.join(
-      process.cwd(),
-      `./package.json`
-    ));
+    const { dependencies, types } = require(`./package.json`);
     return { dependencies, types };
   } catch (error) {
     return null;
