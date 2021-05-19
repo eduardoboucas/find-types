@@ -1,11 +1,9 @@
 const got = require("got");
 
 const getDependenciesWithTypes = async (packageName, version) => {
-  if (!packageName) {
-    throw new Error("Package name missing");
-  }
-
-  const package = await getPackageJson(packageName, version);
+  const package = packageName
+    ? await getPackageJson(packageName, version)
+    : readPackageJson();
 
   if (!package) {
     throw new Error("Package not found");
@@ -34,6 +32,15 @@ const getPackageJson = async (packageName, version) => {
     const tag = version === undefined ? body["dist-tags"].latest : version;
     const { dependencies, types } = body.versions[tag];
 
+    return { dependencies, types };
+  } catch (error) {
+    return null;
+  }
+};
+
+const readPackageJson = () => {
+  try {
+    const { dependencies, types } = require(`./package.json`);
     return { dependencies, types };
   } catch (error) {
     return null;
